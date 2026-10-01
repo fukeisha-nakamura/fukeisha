@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>風景舎</title>
+<style>
+:root{--ink:#20201e;--muted:#77746d;--line:#d9d7d1}
+*{box-sizing:border-box} html,body{margin:0;padding:0;background:#fff;color:var(--ink)}
+body{font-family:"Hiragino Mincho ProN","Yu Mincho","YuMincho","Noto Serif JP",serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.page{min-height:100vh;display:grid;grid-template-columns:minmax(240px,1fr) minmax(360px,1.25fr);gap:clamp(50px,9vw,150px);padding:clamp(32px,5vw,72px)}
+.left{min-height:86vh;display:flex;flex-direction:column}.left-bottom{margin-top:auto}
+.brand{font-size:clamp(52px,7vw,100px);line-height:1;letter-spacing:.10em;white-space:nowrap;margin-left:-.08em}
+.identity{margin-top:28px;line-height:1.8;letter-spacing:.08em}.identity .role{font-size:14px}.identity .name{font-size:13px;color:var(--muted);margin-top:2px}
+.links{margin-top:14px;padding-top:18px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:7px;width:min(220px,100%);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif;font-size:12px;letter-spacing:.04em}
+.links a{color:var(--muted);transition:color .2s}.links a:hover{color:var(--ink)}
+.right{padding-top:clamp(12px,5vw,64px);max-width:560px}
+.photo-wrap{width:100%;height:290px;margin:0 0 clamp(42px,6vw,68px);display:flex;justify-content:flex-end;align-items:flex-start}
+.photo{display:block;height:290px;width:auto;max-width:100%;object-fit:contain;object-position:right top;background:#f4f3f0;opacity:0;transition:opacity .8s ease}.photo.loaded{opacity:1}
+.heading{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif;font-size:11px;letter-spacing:.18em;color:var(--muted);margin-bottom:22px}
+.work{padding:18px 0 20px;border-top:1px solid var(--line)}.work:last-child{border-bottom:1px solid var(--line)}
+.title{font-size:18px;letter-spacing:.04em}.desc{margin-top:7px;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif;font-size:12px;color:var(--muted);letter-spacing:.03em}
+.year{margin-top:8px;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif;font-size:10px;color:#aaa79f}
+.footer{margin-top:42px;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif;font-size:9px;color:#aaa79f;letter-spacing:.12em}
+@media (max-width:760px){
+.page{display:block;padding:30px 24px 44px}.left{min-height:auto}.brand{font-size:58px}.left-bottom{margin-top:48px}.identity{margin-top:0}
+.links{margin-top:34px;margin-bottom:56px}.right{padding-top:0;max-width:none}
+.photo-wrap{height:220px;margin-bottom:46px}.photo{height:220px;max-width:100%}
+}
+</style>
+</head>
+<body>
+<main class="page">
+<section class="left">
+<div class="brand">風景舎</div>
+<div class="left-bottom">
+<div class="identity"><div class="role">編集・ライティング</div><div class="name">田中太郎</div></div>
+<nav class="links" aria-label="links">
+<a href="#" target="_blank" rel="noopener">Instagram　@〜〜</a>
+<a href="#" target="_blank" rel="noopener">Note</a>
+<a href="#" target="_blank" rel="noopener">X</a>
+<a href="mailto:your@email.com">email</a>
+</nav>
+</div>
+</section>
+<section class="right">
+<div class="photo-wrap"><img id="randomPhoto" class="photo" alt="風景舎の写真"></div>
+<div class="heading">WORKS</div>
+<article class="work"><div class="title">地域の記憶をたどるWeb記事</div><div class="desc">取材・構成・執筆・編集</div><div class="year">2026</div></article>
+<article class="work"><div class="title">研究者へのインタビュー</div><div class="desc">企画・インタビュー・記事制作</div><div class="year">2026</div></article>
+<article class="work"><div class="title">地域史・文化に関する編集</div><div class="desc">調査・編集・ライティング</div><div class="year">2025</div></article>
+<article class="work"><div class="title">書籍・雑誌の編集</div><div class="desc">企画・編集・校正</div><div class="year">2025</div></article>
+<div class="footer">FŪKEISHA / EDITING &amp; WRITING</div>
+</section>
+</main>
+<script>
+const photos=["photo01.jpg","photo02.jpg","photo03.jpg","photo04.jpg","photo05.jpg"];
+const photo=document.getElementById("randomPhoto");
+const selected=photos[Math.floor(Math.random()*photos.length)];
+photo.onload=()=>photo.classList.add("loaded");
+photo.onerror=()=>{photo.parentElement.style.display="none"};
+photo.src=selected;
+</script>
+</body>
+</html>
